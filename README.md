@@ -9,6 +9,8 @@
 `jsxbin-webpack-plugin` is a Webpack 4.x plugin for compiling ExtendScript into `.jsxbin` files for use in
 Adobe CEP extensions. **If you are looking for Webpack 3.x support, use v0.0.4 and older.**
 
+This fork fix the os.dir() issue, which may have no permission tu unlink file in /var/folders/rq/yhgkyz113lz564yzth34j7wh0000gn/T/app.jsxbinx
+
 ## Get Started
 
 ```sh

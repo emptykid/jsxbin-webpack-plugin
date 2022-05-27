@@ -18,10 +18,19 @@ class JSXBinWebpackPlugin {
     }
   }
 
+
+    _getUserDirectory() {
+        if (process.platform === 'win32') {
+            return path.join(process.env["USERPROFILE"], 'AppData', 'Roaming');
+        } else {
+            return path.join(process.env["HOME"], 'Library', 'Application Support');
+        }
+    }
+
   async _compileFile (compilation, fileName) {
     const jsxFilename = fileName.replace('.js', '.jsxbin')
-    const temporaryJSDestination = path.join(os.tmpdir(), fileName)
-    const temporaryJSXDestination = path.join(os.tmpdir(), jsxFilename)
+    const temporaryJSDestination = path.join(this._getUserDirectory(), fileName)
+    const temporaryJSXDestination = path.join(this._getUserDirectory(), jsxFilename)
     if (fs.existsSync(temporaryJSDestination)) {
       fs.unlinkSync(temporaryJSDestination)
     }
